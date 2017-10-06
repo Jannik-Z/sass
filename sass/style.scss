@@ -1,0 +1,73 @@
+@import "reset";
+
+$base-color: #0f9988;
+$size: 200px ;
+
+@mixin sizing($size){
+  width: $size;
+  height: $size;
+}
+
+%flexbox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%color-card{
+  @extend %flexbox;
+  width: $size;
+  height: $size;
+  font-family: sans-serif;
+  font-weight: 100;
+  color:#fff;
+}
+
+body{
+  height: 100vh;
+  @extend %flexbox;
+}
+
+.lighter{
+  @extend %color-card;
+  @include sizing($size*0.8);
+  background: lighten($base-color, 10%);
+  &:after{
+    content: " ("+lighten($base-color, 10%)+")";
+  }
+}
+
+.light{
+  @extend %color-card;
+  @include sizing($size*0.9);
+  background: lighten($base-color, 5%);
+  &:after{
+    content: " ("+lighten($base-color, 5%)+")";
+  }
+}
+
+.base{
+  @extend %color-card;
+  background: $base-color;
+  &:after{
+    content: " ("+$base-color+")";
+  }
+}
+
+.dark{
+  @extend %color-card;
+  @include sizing($size*0.9);
+  background: darken($base-color, 5%);
+  &:after{
+    content: " ("+darken($base-color, 5%)+")";
+  }
+}
+
+.darker{
+  @extend %color-card;
+  @include sizing($size*0.8);
+  background: darken($base-color, 10%);
+  &:after{
+    content: " ("+darken($base-color, 10%)+")";
+  }
+}
